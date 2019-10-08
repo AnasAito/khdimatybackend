@@ -1,5 +1,5 @@
 {
-  "name": "khdimbackend",
+  "name": "khdimatybackend",
   "scripts": {
     "start": "node src/index.js",
     "prisma": "prisma"
