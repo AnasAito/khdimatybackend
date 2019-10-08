@@ -4,7 +4,7 @@ const { prisma } = require("./generated/prisma-client");
 const resolvers = {
   Query: {
     feed: (parent, args, context) => {
-      //console
+      //test test
       return context.prisma.posts({ where: { published: true } });
     },
     drafts: (parent, args, context) => {
