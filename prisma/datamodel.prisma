@@ -1,6 +1,50 @@
-type Post {
+type User  {
   id: ID! @id
-  published: Boolean! @default(value: false)
-  title: String!
-  content: String!
+  username: String!@unique
+  email:String! 
+  mytasks:[Mytask!]! @relation(link: TABLE)
+  myrewards:[Myreward!]!@relation(link: TABLE)
+  score :Int
 }
+type Task  {
+  id: ID!@id
+  name: String!@unique
+  description: String
+  type:String!
+  taskScore:Int!
+  questions:[Question!]!@relation(link: TABLE)
+  mytasks:[Mytask] 
+}
+type Mytask  {
+  id: ID!@id
+  user : User! 
+  task:Task!
+  metadata:String!
+}
+type Question  {
+  id: ID!@id
+  questionText: String!
+  options:[Option!]! @relation(link: TABLE)
+task:Task
+}
+type Option {
+  id: ID!@id
+  optionText:String!
+ question:Question  
+
+}
+type Reward {
+  id: ID!@id
+  decription:String
+  url:String!
+  myrewards:[Myreward!]!@relation(link: TABLE)
+  equivalentScore:Int!
+
+}
+type Myreward  {
+  id: ID!@id
+ user:User!
+ reward:Reward! 
+ 
+}
+

@@ -20,6 +20,7 @@ const resolvers = {
         title,
         content
       });
+      
     },
     deletePost(parent, { id }, context) {
       return context.prisma.deletePost({ id });

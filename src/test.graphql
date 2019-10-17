@@ -1,0 +1,43 @@
+##test
+##mutation create user 
+mutation {
+    createUser(data: { username: "soufiane", email: "soufiane@gmail.com", score: 0 }) {
+      id
+      username
+    }
+  }
+## mutation create task 
+# Write your query or mutation here
+mutation {
+  createTask(
+    data: {
+      name: "task3-vscode"
+      type: "vscode"
+      taskScore: 10
+      questions: {
+        create: [
+          {
+            questionText: "question1"
+            options: { create: { optionText: "option11" } }
+          }
+          {
+            questionText: "question2"
+            options: { create: { optionText: "option21" } }
+          }
+        ]
+      }
+    }
+  ) {
+    id
+    name
+    type
+    questions {
+      id
+      questionText
+      options {
+        id
+        optionText
+      }
+    }
+  }
+}

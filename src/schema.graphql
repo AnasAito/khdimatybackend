@@ -1,18 +1,58 @@
+#import  User from 
+
 type Query {
-  feed: [Post!]!
-  drafts: [Post!]!
-  post(id: ID!): Post
+  myreward(where: MyrewardWhereUniqueInput!): Myreward
+  myrewards(where: MyrewardWhereInput, orderBy: MyrewardOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Myreward]!
+  mytask(where: MytaskWhereUniqueInput!): Mytask
+  mytasks(where: MytaskWhereInput, orderBy: MytaskOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Mytask]!
+  option(where: OptionWhereUniqueInput!): Option
+  options(where: OptionWhereInput, orderBy: OptionOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Option]!
+  question(where: QuestionWhereUniqueInput!): Question
+  questions(where: QuestionWhereInput, orderBy: QuestionOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Question]!
+  reward(where: RewardWhereUniqueInput!): Reward
+  rewards(where: RewardWhereInput, orderBy: RewardOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Reward]!
+  task(where: TaskWhereUniqueInput!): Task
+  tasks(where: TaskWhereInput, orderBy: TaskOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Task]!
+  user(where: UserWhereUniqueInput!): User
+  users(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [User]!
 }
 
 type Mutation {
-  createDraft(title: String!, content: String): Post
-  deletePost(id: ID!): Post
-  publish(id: ID!): Post
+ createMyreward(data: MyrewardCreateInput!): Myreward!
+  updateMyreward(data: MyrewardUpdateInput!, where: MyrewardWhereUniqueInput!): Myreward
+  deleteMyreward(where: MyrewardWhereUniqueInput!): Myreward
+  createMytask(data: MytaskCreateInput!): Mytask!
+  updateMytask(data: MytaskUpdateInput!, where: MytaskWhereUniqueInput!): Mytask
+  deleteMytask(where: MytaskWhereUniqueInput!): Mytask
+  createOption(data: OptionCreateInput!): Option!
+  updateOption(data: OptionUpdateInput!, where: OptionWhereUniqueInput!): Option
+  deleteOption(where: OptionWhereUniqueInput!): Option
+  createQuestion(data: QuestionCreateInput!): Question!
+  updateQuestion(data: QuestionUpdateInput!, where: QuestionWhereUniqueInput!): Question
+  deleteQuestion(where: QuestionWhereUniqueInput!): Question
+  createReward(data: RewardCreateInput!): Reward!
+  updateReward(data: RewardUpdateInput!, where: RewardWhereUniqueInput!): Reward
+  deleteReward(where: RewardWhereUniqueInput!): Reward
+  createTask(data: TaskCreateInput!): Task!
+  updateTask(data: TaskUpdateInput!, where: TaskWhereUniqueInput!): Task
+  deleteTask(where: TaskWhereUniqueInput!): Task
+  createUser(data: UserCreateInput!): User!
+  updateUser(data: UserUpdateInput!, where: UserWhereUniqueInput!): User
+  deleteUser(where: UserWhereUniqueInput!): User
 }
-
-type Post {
+type Myreward {
   id: ID!
-  published: Boolean!
-  title: String!
-  content: String!
+  user: User!
+  reward: Reward!
+}
+type Mytask {
+  id: ID!
+  user: User!
+  task: Task!
+  metadata: Json
+}
+type Option {
+  id: ID!
+  optionText: String!
+  question: Question
 }
